@@ -5,7 +5,6 @@ from aiogram.client.session.aiohttp import AiohttpSession
 import logging
 
 API_TOKEN = '7327562948:AAGiH_qsu4Uh5816u2F26Y6ifOgxPu9QPdc'
-session = AiohttpSession("")
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
 logging.basicConfig(level=logging.INFO)
