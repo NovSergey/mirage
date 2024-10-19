@@ -27,7 +27,7 @@ async def start_bot():
 async def inactive():
     while True:
         await asyncio.sleep(40)
-        requests.get("http://0.0.0.0:8090")
+        requests.get("http://0.0.0.0:8080")
 
 def start_server():
     app.run(host='0.0.0.0', port=8080)
