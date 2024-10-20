@@ -1,19 +1,15 @@
-import asyncio
+from fastapi import FastAPI
 
-from flask import Flask
-
-from tgbot.main import start_bot
+from tgbot.main import bot, dp
 
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route("/")
+@app.get('/start')
+async def start():
+    await dp.start_polling(bot)
+    return ''
+
+@app.get("/")
 def index():
-    return "ok"
-
-@app.route("/start_bot")
-def start_bot():
-    loop = asyncio.new_event_loop()
-    loop.create_task(start_bot())
-    loop.run_forever()
     return "ok"
