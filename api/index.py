@@ -7,7 +7,11 @@ from tgbot.main import start_bot
 
 app = Flask(__name__)
 
-@app.get("/start_bot")
+@app.route("/")
+def index():
+    return "ok"
+
+@app.route("/start_bot")
 def start_bot():
     loop = asyncio.new_event_loop()
     loop.create_task(start_bot())
