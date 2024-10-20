@@ -1,6 +1,6 @@
 import asyncio
 from threading import Thread
-import os
+import sys
 import requests
 from flask import Flask
 from aiogram import Bot, Dispatcher, types, F
@@ -23,7 +23,8 @@ async def start(message: types.Message):
 
 @dp.message(F.text == "/close")
 async def close_app(message: types.Message):
-    os._exit()
+    await message.answer("ok")
+    sys.exit()
 
 async def start_bot():
     await dp.start_polling(bot)
