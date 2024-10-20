@@ -8,13 +8,13 @@ from tgbot.main import start_bot
 
 app = FastAPI()
 
+def start_bot_f():
+    asyncio.run(start_bot())
 
 @app.get('/start')
 async def start():
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    bot_thread = threading.Thread(target=loop.run_until_complete, args=(start_bot(),), daemon=True)
-    bot_thread.start()
+    bot_process = multiprocessing.Process(target=start_bot_f, daemon=True)
+    bot_process.start()
     return 'started'
 
 @app.get("/")
